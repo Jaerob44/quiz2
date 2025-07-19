@@ -13,9 +13,10 @@ This project is a Django web application that serves as a Job Applicant Dashboar
 * **Bootstrap Styling:** The entire dashboard is styled using Bootstrap, hosted as a static CDN.
 
 ## Project Structure
-job_dashboard/
-├── job_dashboard/          # Main Django project settings
+Quiz2/
+
 ├── portfolio/              # Django app for portfolio and applicant management
+├── Quiz2/                  # Main Django project settings
 ├── static/                 # Directory for static files (Bootstrap CSS/JS)
 ├── templates/              # Base template directory, containing app-specific subdirectories
 │   └── portfolio/
@@ -42,7 +43,7 @@ Move into your new project folder:
 
 Bash
 
-cd job_dashboard
+cd Quiz2
 2. Set Up a Python Environment (Virtual Environment)
 It's best practice to create a virtual environment. Think of it as an isolated space for your project's Python packages, so they don't conflict with other projects on your computer.
 
@@ -122,6 +123,6 @@ Run this command:
 Bash
 
 python manage.py runserver
-Open your web browser and go to http://127.0.0.1:8000/. You should see your Job Applicant Dashboard.
+Open your web browser and go to http://127.0.0.1:8000/. You should see the junior developer .
 
 You can also access the Django Admin Panel at http://127.0.0.1:8000/admin/ using the superuser credentials you created.
