@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}{{ portfolio.user.first_name }} {{ portfolio.user.last_name }}'s Portfolio{% endblock %}
+
+{% block content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'applicant_list' %}">Applicants</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ portfolio.user.username }}</li>
+        </ol>
+    </nav>
+
+    <h1 class="mb-4">Portfolio of {{ portfolio.user.first_name }} {{ portfolio.user.last_name }}</h1>
+    <hr/>
+
+    <div class="card mb-3">
+        <div class="card-header bg-primary text-white">
+            <h5>Applicant Information</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Username:</strong> {{ portfolio.user.username }}</p>
+            <p><strong>Email:</strong> {{ portfolio.user.email }}</p>
+            <p><strong>First Name:</strong> {{ portfolio.user.first_name }}</p>
+            <p><strong>Last Name:</strong> {{ portfolio.user.last_name }}</p>
+        </div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-header bg-success text-white">
+            <h5>Portfolio Details</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Title:</strong> {{ portfolio.portfolio_title }}</p>
+            <p><strong>Description:</strong> {{ portfolio.portfolio_description }}</p>
+        </div>
+    </div>
+
+    {% if portfolio.project %}
+        <div class="card mb-3">
+            <div class="card-header bg-info text-white">
+                <h5>Project Details</h5>
+            </div>
+            <div class="card-body">
+                <p><strong>Project Name:</strong> {{ portfolio.project.project_name }}</p>
+                <p><strong>Project Description:</strong> {{ portfolio.project.project_description }}</p>
+                <p><strong>Created At:</strong> {{ portfolio.project.created_at|date:"M d, Y P" }}</p>
+                <p><strong>Updated At:</strong> {{ portfolio.project.updated_at|date:"M d, Y P" }}</p>
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-warning" role="alert">
+            No project assigned to this portfolio yet.
+        </div>
+    {% endif %}
+
+    <div class="mt-4">
+        <a href="{% url 'applicant_list' %}" class="btn btn-secondary">Back to Applicants</a>
+    </div>
+{% endblock %}

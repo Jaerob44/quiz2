@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Applicant List{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">Applicants for: <span class="badge bg-primary">{{ position }}</span></h1>
+    <p>Below is a list of job applicants for the **{{ position }}** position.</p>
+    <hr/>
+    {% if applicants %}
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for applicant in applicants %}
+                        <tr>
+                            <td>{{ applicant.first_name }}</td>
+                            <td>{{ applicant.last_name }}</td>
+                            <td>{{ applicant.email }}</td>
+                            <td>
+                                <a href="{% url 'portfolio_detail' username=applicant.username %}" class="btn btn-sm btn-info me-2">Go</a>
+                                <a href="{% url 'applicant_delete' username=applicant.username %}" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            No applicants found for the {{ position }} position yet.
+        </div>
+    {% endif %}
+{% endblock %}

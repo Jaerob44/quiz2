@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Confirm Delete{% endblock %}
+
+{% block content %}
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Confirm Deletion!</h4>
+        <p>Are you sure you want to delete the applicant <strong>{{ user_to_delete.first_name }} {{ user_to_delete.last_name }}</strong> (username: {{ user_to_delete.username }})?</p>
+        <p>Deleting this user will also delete their associated portfolio and project.</p>
+        <hr>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger me-2">Yes, Delete</button>
+            <a href="{% url 'applicant_list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+{% endblock %}
